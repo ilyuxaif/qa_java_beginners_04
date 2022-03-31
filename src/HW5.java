@@ -132,17 +132,21 @@ public class HW5 {
 
 //        taskNumber(13);
 //        luckyNumber(1999);
+        System.out.println("Lucky number of 2005 is: " + luckyNumber2(2005));
+        System.out.println("Lucky number of 1999 is: " + luckyNumber2(1999));
+        System.out.println("Lucky number of 1548 is: " + luckyNumber2(1548));
+        System.out.println("Lucky number of 1304 is: " + luckyNumber2(1304));
 
 //        taskNumber(14);
 //
 //        taskNumber(15);
 //
-        taskNumber(16);
-        int a3 = 3;
-        int b3 = 4;
-        int c3 = 20;
-
-        System.out.println(solveEquation(a3, b3, c3));
+//        taskNumber(16);
+//        int a3 = 3;
+//        int b3 = 4;
+//        int c3 = 20;
+//
+//        System.out.println(solveEquation(a3, b3, c3));
 //
 //        taskNumber(17);
 //
@@ -193,7 +197,7 @@ public class HW5 {
             return "Tuesday";
         }else if (numberDay == 1) {
             return "Monday";
-        } else return "Stop";
+        } else return "not existent day";
     }
 
     public static int getSmallest (int a, int b, int c) {
@@ -298,7 +302,29 @@ public class HW5 {
         System.out.println(year);
     }
 
+    public static int luckyNumber2 (int year) {
+        if (year < 10) {
+            return year;
+        } else {
+            while (year > 9) {
+                int sum = 0;
+                for (int i = 0; i < String.valueOf(year).length(); i++) {
+                    sum = sum + Integer.parseInt(String.valueOf(String.valueOf(year).charAt(i)));
+                }
+                year = sum;
+            }
+        }
+        return year;
+    }
+
     public static double solveEquation (int a, int b, int c) {
+//        Посчитать с помощью методов класса Math
+//        a = 3
+//        b = 4
+//        c = 20
+//
+//        ((a * b + c) * ab)
+//        Вернуть значение с округлением в бОльшую сторону.
         return Math.round(Math.sqrt((a * b + c) * Math.pow(a, b)) / Math.PI);
     }
 }
