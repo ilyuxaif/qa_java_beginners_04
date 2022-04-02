@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class HW5 {
     public static void main(String[] args) {
 
@@ -131,31 +133,40 @@ public class HW5 {
 //                checkNumberSign(1)));
 
 //        taskNumber(13);
-//        luckyNumber(1999);
-        System.out.println("Lucky number of 2005 is: " + luckyNumber2(2005));
-        System.out.println("Lucky number of 1999 is: " + luckyNumber2(1999));
-        System.out.println("Lucky number of 1548 is: " + luckyNumber2(1548));
-        System.out.println("Lucky number of 1304 is: " + luckyNumber2(1304));
+//        System.out.println("Lucky number of 2005 is: " + luckyNumber2(2005));
 
 //        taskNumber(14);
+//        System.out.println(averageMedianDiff(1, 3, 9));
+//        System.out.println(averageMedianDiff(12, 13, 101));
+//        System.out.println(averageMedianDiff(14,2, 12));
 //
 //        taskNumber(15);
+//        System.out.println(buyerWins(10.75));
 //
 //        taskNumber(16);
 //        int a3 = 3;
 //        int b3 = 4;
 //        int c3 = 20;
-//
 //        System.out.println(solveEquation(a3, b3, c3));
 //
 //        taskNumber(17);
 //
+//
 //        taskNumber(18);
+//        System.out.println(getRandomNumberPower(8));
+//        System.out.println(getRandomNumberPower(5));
+//        System.out.println(getRandomNumberPower(3));
+//        System.out.println(getRandomNumberPower(10));
 //
 //        taskNumber(19);
+//        System.out.println(getRandomNumber());
+//        System.out.println(getRandomNumber());
+//        System.out.println(getRandomNumber());
+//        System.out.println(getRandomNumber());
 //
 //        taskNumber(20);
-
+//        System.out.printf("The year %d is leap year? %b \n", 1900, isLeapYear(1900));
+//        System.out.printf("The year %d is leap year? %b \n", 2012, isLeapYear(2012));
     }
 
     public static String verifyStrEquals (String expectedResult, String actualResult) {
@@ -325,6 +336,73 @@ public class HW5 {
 //
 //        ((a * b + c) * ab)
 //        Вернуть значение с округлением в бОльшую сторону.
-        return Math.round(Math.sqrt((a * b + c) * Math.pow(a, b)) / Math.PI);
+        return Math.ceil(Math.sqrt((a * b + c) * Math.pow(a, b)) / Math.PI);
+    }
+
+    public static String averageMedianDiff (int a, int b, int c) {
+        int average = (a + b + c) / 3;
+        int[] arr = {a, b, c};
+        Arrays.sort(arr);
+        int median = arr[1];
+        if (Math.abs(average - median) > 2) {
+            return ("Average of " + average + " differs from median of " + median + " at " + Math.abs(average - median));
+        } return ("Average is " + average + ", median is " + median);
+    }
+
+    public static String buyerWins (double number) {
+        return ((int) Math.floor(number) + " руб 00 коп");
+    }
+
+    public static String getRandomNumberPower(int power){
+//        Написать метод, который с помощью методов класса Math высчитывает любую степень сгенерированного
+//        случайного числа. Метод возвращает математически округленное целое значение и выводит на экран:
+//        “Число … в степени … = …”
+//
+//        return (int) Math.round((Math.pow(Math.random(), power)));
+        double n = Math.random();
+        return "Число " + String.format("%.4f", n) + " в степени " + power + " = " + (int) Math.round((Math.pow(n, power)));
+    }
+
+    public static int getRandomNumber() {
+//        Написать метод, который возвращает случайное число в пределах от 1 до 99 включительно.
+        return (int) ((Math.random() * (100 - 1)) + 1);
+    }
+
+    public static boolean isLeapYear(int year) {
+        boolean leap = false;
+        // if the year is divided by 4
+        if (year % 4 == 0) {
+            // if the year is century
+            if (year % 100 == 0) {
+                // if year is divided by 400
+                // then it is a leap year
+                if (year % 400 == 0)
+                    leap = true;
+                else
+                    leap = false;
+            }
+            // if the year is not century
+            else
+                leap = true;
+        }
+        else
+            leap = false;
+
+        return leap;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
